@@ -3,7 +3,7 @@
  */
 
 // SPDX-License-Identifier: agpl-3.0
-pragma solidity 0.7.5;
+pragma solidity 0.8.0;
 pragma experimental ABIEncoderV2;
 
 interface IGovernancePowerDelegationToken {
@@ -427,7 +427,7 @@ library Address {
  * allowances. See {IERC20-approve}.
  */
 contract ERC20 is Context, IERC20 {
-  using SafeMath for uint256;
+
   using Address for address;
 
   mapping(address => uint256) private _balances;
@@ -781,7 +781,7 @@ library DistributionTypes {
  * which allows you to call the safe operations as `token.safeTransfer(...)`, etc.
  */
 library SafeERC20 {
-  using SafeMath for uint256;
+
   using Address for address;
 
   function safeTransfer(
@@ -879,7 +879,7 @@ interface IAaveDistributionManager {
  * @author Aave
  **/
 contract AaveDistributionManager is IAaveDistributionManager {
-  using SafeMath for uint256;
+
 
   struct AssetData {
     uint128 emissionPerSecond;
@@ -1116,7 +1116,7 @@ contract AaveDistributionManager is IAaveDistributionManager {
  * @author Aave
  */
 abstract contract GovernancePowerDelegationERC20 is ERC20, IGovernancePowerDelegationToken {
-  using SafeMath for uint256;
+
   /// @notice The EIP-712 typehash for the delegation struct used by the contract
   bytes32 public constant DELEGATE_BY_TYPE_TYPEHASH =
     keccak256('DelegateByType(address delegatee,uint256 type,uint256 nonce,uint256 expiry)');
@@ -1420,7 +1420,7 @@ abstract contract GovernancePowerDelegationERC20 is ERC20, IGovernancePowerDeleg
  * @author Aave
  **/
 abstract contract GovernancePowerWithSnapshot is GovernancePowerDelegationERC20 {
-  using SafeMath for uint256;
+
 
   /**
    * @dev The following storage layout points to the prior StakedToken.sol implementation:
@@ -1452,7 +1452,7 @@ contract StakedTokenV2Rev3 is
   VersionedInitializable,
   AaveDistributionManager
 {
-  using SafeMath for uint256;
+
   using SafeERC20 for IERC20;
 
   /// @dev Start of Storage layout from StakedToken v1

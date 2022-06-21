@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: agpl-3.0
-pragma solidity 0.7.5;
+pragma solidity 0.8.0;
 
 import {ERC20} from '../lib/ERC20.sol';
 import {ITransferHook} from '../interfaces/ITransferHook.sol';
-import {SafeMath} from '../lib/SafeMath.sol';
 import {
   GovernancePowerDelegationERC20
 } from '@aave/aave-token/contracts/token/base/GovernancePowerDelegationERC20.sol';
@@ -14,8 +13,6 @@ import {
  * @author Aave
  **/
 abstract contract GovernancePowerWithSnapshot is GovernancePowerDelegationERC20 {
-  using SafeMath for uint256;
-
   /**
    * @dev The following storage layout points to the prior StakedToken.sol implementation:
    * _snapshots => _votingSnapshots

@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: agpl-3.0
-pragma solidity 0.7.5;
+pragma solidity 0.8.0;
 pragma experimental ABIEncoderV2;
 
 import {DistributionTypes} from '../lib/DistributionTypes.sol';
-import {SafeMath} from '../lib/SafeMath.sol';
 
 import {IERC20} from '../interfaces/IERC20.sol';
 import {IAToken} from '../interfaces/IAToken.sol';
@@ -22,7 +21,6 @@ contract AaveIncentivesController is
   VersionedInitializable,
   AaveDistributionManager
 {
-  using SafeMath for uint256;
   uint256 public constant REVISION = 1;
 
   IStakedAave public immutable PSM;

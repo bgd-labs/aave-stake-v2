@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: agpl-3.0
-pragma solidity 0.7.5;
+pragma solidity 0.8.0;
 pragma experimental ABIEncoderV2;
 
 import {ERC20} from '@aave/aave-token/contracts/open-zeppelin/ERC20.sol';
@@ -11,7 +11,6 @@ import {IStakedTokenV3} from '../interfaces/IStakedTokenV3.sol';
 import {ITransferHook} from '../interfaces/ITransferHook.sol';
 
 import {DistributionTypes} from '../lib/DistributionTypes.sol';
-import {SafeMath} from '../lib/SafeMath.sol';
 import {SafeERC20} from '../lib/SafeERC20.sol';
 import {PercentageMath} from '../lib/PercentageMath.sol';
 import {StakedTokenV2} from './StakedTokenV2.sol';
@@ -27,7 +26,6 @@ import {RoleManager} from '../utils/RoleManager.sol';
  * @author Aave
  **/
 contract StakedTokenV3 is StakedTokenV2, IStakedTokenV3, RoleManager {
-  using SafeMath for uint256;
   using SafeERC20 for IERC20;
   using PercentageMath for uint256;
 
@@ -121,7 +119,10 @@ contract StakedTokenV3 is StakedTokenV2, IStakedTokenV3, RoleManager {
     string calldata symbol,
     uint8 decimals
   ) external initializer {
-    require(maxSlashablePercentage <= PercentageMath.PERCENTAGE_FACTOR, 'INVALID_SLASHING_PERCENTAGE');
+    require(
+      maxSlashablePercentage <= PercentageMath.PERCENTAGE_FACTOR,
+      'INVALID_SLASHING_PERCENTAGE'
+    );
     uint256 chainId;
 
     //solium-disable-next-line

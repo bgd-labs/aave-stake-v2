@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: agpl-3.0
-pragma solidity 0.7.5;
+pragma solidity 0.8.0;
 
 import {ERC20} from '../lib/ERC20.sol';
 import {ITransferHook} from '../interfaces/ITransferHook.sol';
-import {SafeMath} from '../lib/SafeMath.sol';
 
 /**
  * @title ERC20WithSnapshot
@@ -11,8 +10,6 @@ import {SafeMath} from '../lib/SafeMath.sol';
  * @author Aave
  **/
 contract ERC20WithSnapshot is ERC20 {
-  using SafeMath for uint256;
-
   /// @dev snapshot of a value on a specific block, used for balances
   struct Snapshot {
     uint128 blockNumber;

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: agpl-3.0
-pragma solidity 0.7.5;
+pragma solidity 0.8.0;
 pragma experimental ABIEncoderV2;
 
 import {IERC20} from '../interfaces/IERC20.sol';
@@ -10,7 +10,6 @@ import {SafeERC20} from '../lib/SafeERC20.sol';
 import {VersionedInitializable} from '../utils/VersionedInitializable.sol';
 import {DistributionTypes} from '../lib/DistributionTypes.sol';
 import {AaveDistributionManager} from './AaveDistributionManager.sol';
-import {SafeMath} from '../lib/SafeMath.sol';
 
 /**
  * @title StakedToken
@@ -23,7 +22,6 @@ contract StakedToken is
   VersionedInitializable,
   AaveDistributionManager
 {
-  using SafeMath for uint256;
   using SafeERC20 for IERC20;
 
   uint256 public constant REVISION = 1;

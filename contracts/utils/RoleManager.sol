@@ -1,4 +1,4 @@
-pragma solidity ^0.7.5;
+pragma solidity ^0.8.0;
 
 /**
  * @title RoleManager
@@ -62,7 +62,10 @@ contract RoleManager {
     require(roles.length == admins.length, 'INCONSISTENT_INITIALIZATION');
 
     for (uint256 i = 0; i < roles.length; i++) {
-      require(_admins[roles[i]] == address(0) && admins[i] != address(0), 'ADMIN_CANNOT_BE_INITIALIZED');
+      require(
+        _admins[roles[i]] == address(0) && admins[i] != address(0),
+        'ADMIN_CANNOT_BE_INITIALIZED'
+      );
       _admins[roles[i]] = admins[i];
       emit RoleClaimed(admins[i], roles[i]);
     }
